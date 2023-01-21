@@ -154,6 +154,7 @@ class HeatMapPage extends StatelessWidget {
             HeatMapWeekText(
               margin: margin,
               fontSize: fontSize,
+              locale: locale,
               size: size,
               fontColor: textColor,
             ),
