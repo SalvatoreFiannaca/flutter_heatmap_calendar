@@ -7,6 +7,9 @@ class HeatMapMonthText extends StatelessWidget {
   /// From 1: January to 12: December.
   final List<int>? firstDayInfos;
 
+  /// Locale
+  final String? locale;
+
   /// The double value for space between labels.
   final double? size;
 
@@ -22,6 +25,7 @@ class HeatMapMonthText extends StatelessWidget {
   const HeatMapMonthText({
     Key? key,
     this.firstDayInfos,
+    this.locale,
     this.fontSize,
     this.fontColor,
     this.size,
@@ -43,17 +47,21 @@ class HeatMapMonthText extends StatelessWidget {
           (label > 0 && firstDayInfos![label] != firstDayInfos![label - 1])) {
         _write = true;
 
+        String monthLabel =
+            DateUtil.getShortMothLabel(firstDayInfos![label], locale);
+
         // Add Text without width margin if first week is end of the month.
         // Otherwise, add Text with width margin.
         items.add(
-          firstDayInfos!.length == 1 || (label == 0 && firstDayInfos![label] != firstDayInfos![label + 1])
-              ? _renderText(DateUtil.SHORT_MONTH_LABEL[firstDayInfos![label]])
+          firstDayInfos!.length == 1 ||
+                  (label == 0 &&
+                      firstDayInfos![label] != firstDayInfos![label + 1])
+              ? _renderText(monthLabel)
               : Container(
                   width: (((size ?? 20) + (margin?.right ?? 2)) * 2),
                   margin: EdgeInsets.only(
                       left: margin?.left ?? 2, right: margin?.right ?? 2),
-                  child: _renderText(
-                      DateUtil.SHORT_MONTH_LABEL[firstDayInfos![label]]),
+                  child: _renderText(monthLabel),
                 ),
         );
       } else if (_write) {

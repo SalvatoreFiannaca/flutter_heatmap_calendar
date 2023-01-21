@@ -8,6 +8,9 @@ class HeatMapWeekText extends StatelessWidget {
   /// The double value of label's font size.
   final double? fontSize;
 
+  /// Locale
+  final String? locale;
+
   /// The double value of every block's size to fit the height.
   final double? size;
 
@@ -19,15 +22,26 @@ class HeatMapWeekText extends StatelessWidget {
     this.margin,
     this.fontSize,
     this.size,
+    this.locale,
     this.fontColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<String> weekLabels;
+
+    switch (locale) {
+      case 'it':
+        weekLabels = DateUtil.WEEK_LABEL_IT;
+        break;
+      default:
+        weekLabels = DateUtil.WEEK_LABEL;
+    }
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        for (String label in DateUtil.WEEK_LABEL)
+        for (String label in weekLabels)
           Container(
             height: size ?? 20,
             margin: margin ?? const EdgeInsets.all(2.0),

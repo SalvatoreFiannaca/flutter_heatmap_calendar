@@ -21,6 +21,9 @@ class HeatMap extends StatefulWidget {
   /// The datasets which fill blocks based on its value.
   final Map<DateTime, int>? datasets;
 
+  /// Locale
+  final String? locale;
+
   /// The color value of every block's default color.
   final Color? defaultColor;
 
@@ -100,6 +103,7 @@ class HeatMap extends StatefulWidget {
     this.margin,
     this.borderRadius,
     this.datasets,
+    this.locale,
     this.defaultColor,
     this.showText = false,
     this.showColorTip = true,
@@ -139,6 +143,7 @@ class _HeatMap extends State<HeatMap> {
           size: widget.size,
           fontSize: widget.fontSize,
           datasets: widget.datasets,
+          locale: widget.locale,
           defaultColor: widget.defaultColor,
           textColor: widget.textColor,
           colorsets: widget.colorsets,

@@ -33,6 +33,22 @@ class DateUtil {
     'Dec',
   ];
 
+  static const List<String> SHORT_MONTH_LABEL_IT = [
+    '',
+    'Gen',
+    'Feb',
+    'Mar',
+    'Apr',
+    'Mag',
+    'Giu',
+    'Lug',
+    'Ago',
+    'Set',
+    'Ott',
+    'Nov',
+    'Dic',
+  ];
+
   static const List<String> WEEK_LABEL = [
     '',
     'Sun',
@@ -42,6 +58,17 @@ class DateUtil {
     'Thu',
     'Fri',
     'Sat',
+  ];
+
+  static const List<String> WEEK_LABEL_IT = [
+    '',
+    'Dom',
+    'Lun',
+    'Mar',
+    'Mer',
+    'Gio',
+    'Ven',
+    'Sab',
   ];
 
   /// Get start day of month.
@@ -87,44 +114,23 @@ class DateUtil {
       DateTime(referenceDate.year, referenceDate.month + monthCount,
           referenceDate.day);
 
-  //#region unused methods.
+  static getShortMothLabel(int index, String? locale) {
+    switch (locale) {
+      case 'it':
+        SHORT_MONTH_LABEL_IT[index];
+        break;
+      default:
+        SHORT_MONTH_LABEL[index];
+    }
+  }
 
-  // static int weekCount(final DateTime referenceDate) {
-  //   return ((startDayOfMonth(referenceDate).weekday % DAYS_IN_WEEK +
-  //               endDayOfMonth(referenceDate).day) /
-  //           DAYS_IN_WEEK)
-  //       .ceil();
-  // }
-
-  // static int weekPos(final DateTime referenceDate) =>
-  //     (referenceDate.day +
-  //         startDayOfMonth(referenceDate).weekday % DAYS_IN_WEEK) ~/
-  //     DAYS_IN_WEEK;
-
-  // static DateTime startDayOfWeek(final DateTime referenceDate) =>
-  //     weekPos(referenceDate) == 0
-  //         ? startDayOfMonth(referenceDate)
-  //         : DateTime(referenceDate.year, referenceDate.month,
-  //             referenceDate.day - referenceDate.weekday % DAYS_IN_WEEK);
-
-  // static DateTime endDayOfWeek(final DateTime referenceDate) {
-  //   return weekPos(referenceDate) != (weekCount(referenceDate) - 1)
-  //       ? DateTime(referenceDate.year, referenceDate.month,
-  //           referenceDate.day - referenceDate.weekday % DAYS_IN_WEEK + 6)
-  //       : endDayOfMonth(referenceDate);
-  // }
-
-  // static DateTime changeWeek(final DateTime referenceDate, int weekCount) =>
-  //     DateTime(referenceDate.year, referenceDate.month,
-  //         1 + DAYS_IN_WEEK * weekCount);
-
-  // static bool compareDate(final DateTime first, final DateTime second) =>
-  //     first.year == second.year &&
-  //     first.month == second.month &&
-  //     first.day == second.day;
-
-  // static bool isStartDayOfMonth(final DateTime referenceDate) =>
-  //     compareDate(referenceDate, startDayOfMonth(referenceDate));
-
-  //#endregion
+  static getWeekLabel(int index, String? locale) {
+    switch (locale) {
+      case 'it':
+        WEEK_LABEL_IT[index];
+        break;
+      default:
+        WEEK_LABEL[index];
+    }
+  }
 }

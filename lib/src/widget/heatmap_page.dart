@@ -39,6 +39,9 @@ class HeatMapPage extends StatelessWidget {
   /// The datasets which fill blocks based on its value.
   final Map<DateTime, int>? datasets;
 
+  /// Locale
+  final String? locale;
+
   /// The margin value for every block.
   final EdgeInsets? margin;
 
@@ -83,6 +86,7 @@ class HeatMapPage extends StatelessWidget {
     this.size,
     this.fontSize,
     this.datasets,
+    this.locale,
     this.defaultColor,
     this.textColor,
     this.colorsets,
@@ -159,6 +163,7 @@ class HeatMapPage extends StatelessWidget {
                 // Show month labels to top of heatmap.
                 HeatMapMonthText(
                   firstDayInfos: _firstDayInfos,
+                  locale: locale,
                   margin: margin,
                   fontSize: fontSize,
                   fontColor: textColor,
