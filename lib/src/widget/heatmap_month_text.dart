@@ -35,6 +35,7 @@ class HeatMapMonthText extends StatelessWidget {
   /// The list of every month labels and fitted space.
   List<Widget> _labels() {
     List<Widget> items = [];
+    String monthLabel;
 
     // Set true if previous week was the first day of the month.
     bool _write = false;
@@ -47,8 +48,7 @@ class HeatMapMonthText extends StatelessWidget {
           (label > 0 && firstDayInfos![label] != firstDayInfos![label - 1])) {
         _write = true;
 
-        String monthLabel =
-            DateUtil.getShortMothLabel(firstDayInfos![label], locale);
+        monthLabel = DateUtil.getShortMonthLabel(firstDayInfos![label], locale);
 
         // Add Text without width margin if first week is end of the month.
         // Otherwise, add Text with width margin.

@@ -114,23 +114,21 @@ class DateUtil {
       DateTime(referenceDate.year, referenceDate.month + monthCount,
           referenceDate.day);
 
-  static getShortMothLabel(int index, String? locale) {
+  static String getShortMonthLabel(int index, String? locale) {
     switch (locale) {
       case 'it':
-        SHORT_MONTH_LABEL_IT[index];
-        break;
+        return SHORT_MONTH_LABEL_IT[index];
       default:
-        SHORT_MONTH_LABEL[index];
+        return SHORT_MONTH_LABEL[index];
     }
   }
 
-  static getWeekLabel(int index, String? locale) {
+  static String getWeekLabel(int index, String? locale) {
     switch (locale) {
       case 'it':
-        WEEK_LABEL_IT[index];
-        break;
+        return WEEK_LABEL_IT[index];
       default:
-        WEEK_LABEL[index];
+        return WEEK_LABEL[index];
     }
   }
 }
